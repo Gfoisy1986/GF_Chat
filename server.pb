@@ -130,9 +130,10 @@ If serverID
  
            
                 Debug "PureBasic - Server A new client has connected !"+ Str(EventClient())
-          
-
- 
+                Debug Programm()\Id
+                Debug Programm()\Con
+                PrintN("Client : "+Programm()\Id+" is connected")
+                PrintN("Connection : "+Programm()\Con+" for client : "+Programm()\Id+" is etablish!")
 
         Case #PB_NetworkEvent_Data
            
@@ -166,6 +167,8 @@ End
   
   
 ; IDE Options = PureBasic 6.12 LTS (Linux - x64)
-; CursorPosition = 139
+; ExecutableFormat = Console
+; CursorPosition = 135
+; FirstLine = 116
 ; EnableXP
 ; DPIAware
