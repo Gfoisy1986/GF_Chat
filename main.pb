@@ -60,9 +60,7 @@ EndProcedure
 OpenWindow(40, 0, 0, 800, 600, "GF_Chat", #PB_Window_SystemMenu | #PB_Window_ScreenCentered)
 TextGadget(41, 0, 0, 150, 20, "Connection : "+StringCon$, #PB_Text_Center)
  SetGadgetColor(41, #PB_Gadget_BackColor, $7CFFF7)
-TextGadget(42, 150, 0, 100, 20, " Message:")
-SetGadgetColor(42, #PB_Gadget_BackColor, $ECFF00)
-TextGadget(43, 250, 0, 550, 20, ""+ServerString$, #PB_Text_Center)
+TextGadget(43, 150, 0, 650, 20, ""+ServerString$, #PB_Text_Center)
 SetGadgetColor(43, #PB_Gadget_BackColor, $ECFF00)
 TextGadget(47, 0, 20, 800, 20, "Connecté sur le canal : "+CanalID, #PB_Text_Center)
 SetGadgetColor(47, #PB_Gadget_BackColor, $FFFFFF)
@@ -163,38 +161,36 @@ Select Network
           
           ClearGadgetItems(44)
              
-      
-         
-  
- ElseIf   PeekS(*Frost, 1100, #PB_UTF8) = "gui"
-          *sty = AllocateMemory(5501)
-          ReceiveNetworkData(ConnectionID, *sty, 5501)
-         
-          Debug PeekS(*sty, 5501, #PB_UTF8)   
-     
- ElseIf   PeekS(*Frost, 1100, #PB_UTF8) = "gui1"
-          *Frost8 = AllocateMemory(191)
-          ReceiveNetworkData(ConnectionID, *Frost8, 191)
           
-          Debug PeekS(*Frost8, 191, #PB_UTF8)
-          
-          
-          
-              AddGadgetItem(44, -1,  PeekS(*sty, 5501, #PB_UTF8)+Chr(10)+PeekS(*Frost8, 191, #PB_UTF8));fff+Chr(10)+qqq+Chr(10)+www+Chr(10)+eee+Chr(10)+rrr+Chr(10)+ttt+Chr(10)+yyy+Chr(10)+uuu+Chr(10)+iii+Chr(10)+ooo+Chr(10)+ppp)
-              
-              
-              
-  
-  
-         
 ElseIf    PeekS(*Frost, 1111, #PB_UTF8) = "charle"
+              *Alex = AllocateMemory(2000)
+              *Mario = AllocateMemory(2003)
          *charle = AllocateMemory(1111)
           ReceiveNetworkData(ConnectionID, *charle, 1111)
+          ReceiveNetworkData(ConnectionID, *Alex, 2000)
+          ReceiveNetworkData(ConnectionID, *Mario, 2003)
+             Data46$ = PeekS(*Mario, 2003, #PB_UTF8)
+            Data45$ = PeekS(*Alex, 2000, #PB_UTF8)
+          AddGadgetItem(44, -1, "Canal Mondial")
+          AddGadgetItem(44, -1, "Ventes - Échanges")
+          AddGadgetItem(44, -1, "Support Tech...")
          
-             AddGadgetItem(44, -1, PeekS(*charle, 1111, #PB_UTF8))
+           AddGadgetItem(44, -1, Data45$)
+           AddGadgetItem(44, -1, Data46$)
+          
+        
+         
+         
+         
+           
+         
+         
           Debug PeekS(*charle, 1111, #PB_UTF8)
         
-          
+          FreeMemory(*Frost)
+          FreeMemory(*charle)
+          FreeMemory(*Alex)
+          FreeMemory(*Mario)
           
              
         EndIf
@@ -260,8 +256,8 @@ EndSelect
   
    
 ; IDE Options = PureBasic 6.12 LTS (Linux - x64)
-; CursorPosition = 186
-; FirstLine = 166
+; CursorPosition = 172
+; FirstLine = 163
 ; Folding = -
 ; EnableThread
 ; EnableXP
