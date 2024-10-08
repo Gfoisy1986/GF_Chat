@@ -62,7 +62,7 @@ TextGadget(41, 0, 0, 150, 20, "Connection : "+StringCon$, #PB_Text_Center)
  SetGadgetColor(41, #PB_Gadget_BackColor, $7CFFF7)
 TextGadget(43, 150, 0, 650, 20, ""+ServerString$, #PB_Text_Center)
 SetGadgetColor(43, #PB_Gadget_BackColor, $ECFF00)
-TextGadget(47, 0, 20, 800, 20, "Connecté sur le canal : "+CanalID, #PB_Text_Center)
+TextGadget(47, 150, 20, 650, 20, "Connecté sur le canal : "+CanalID, #PB_Text_Center)
 SetGadgetColor(47, #PB_Gadget_BackColor, $FFFFFF)
 TextGadget(45, 0, 40, 150, 25, "Liste des Canaux", #PB_Text_Center)
 SetGadgetColor(45, #PB_Gadget_BackColor, $A7E3EF)
@@ -225,10 +225,42 @@ EndSelect
     
              
              
-        ;   Case #PB_102 : 
+           Case 44 : 
              
-
-             
+       *Eric = AllocateMemory(500)
+       ddd$ = "Eric"
+       PokeS(*Eric, ddd$, 500, #PB_UTF8)
+       SendNetworkData(ConnectionID, *Eric, 500)
+       ReAllocateMemory(*Eric, 500)
+       
+       If GetGadgetText(44) = "Canal Mondial" 
+        
+       dd2$ = "Eric2"
+       PokeS(*Eric, dd2$, 500, #PB_UTF8)
+       SendNetworkData(ConnectionID, *Eric, 500)
+         ReAllocateMemory(*Eric, 500)
+        EndIf  
+        
+         
+       
+       If GetGadgetText(44) = "Ventes - Échanges" 
+        
+       dd3$ = "Eric3"
+       PokeS(*Eric, dd3$, 500, #PB_UTF8)
+       SendNetworkData(ConnectionID, *Eric, 500)
+       ReAllocateMemory(*Eric, 500)
+        EndIf  
+          
+       
+        If GetGadgetText(44) = "Support Tech..." 
+        
+       dd4$ = "Eric4"
+       PokeS(*Eric, dd4$, 500, #PB_UTF8)
+       SendNetworkData(ConnectionID, *Eric, 500)
+       ReAllocateMemory(*Eric, 500)
+        EndIf 
+       
+       FreeMemory(*Eric)
         
              
          EndSelect
@@ -256,8 +288,8 @@ EndSelect
   
    
 ; IDE Options = PureBasic 6.12 LTS (Linux - x64)
-; CursorPosition = 172
-; FirstLine = 163
+; CursorPosition = 64
+; FirstLine = 50
 ; Folding = -
 ; EnableThread
 ; EnableXP
