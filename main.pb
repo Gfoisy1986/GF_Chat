@@ -64,7 +64,7 @@ TextGadget(43, 150, 0, 650, 20, ""+ServerString$, #PB_Text_Center)
 SetGadgetColor(43, #PB_Gadget_BackColor, $ECFF00)
 TextGadget(47, 150, 20, 650, 20, "Connecté sur le canal : "+CanalID, #PB_Text_Center)
 SetGadgetColor(47, #PB_Gadget_BackColor, $FFFFFF)
-TextGadget(45, 0, 40, 150, 25, "Liste des Canaux", #PB_Text_Center)
+TextGadget(45, 0, 15, 150, 50, "Liste des Canaux", #PB_Text_Center)
 SetGadgetColor(45, #PB_Gadget_BackColor, $A7E3EF)
 If  ListViewGadget(44, 0, 65, 150, 505) 
     SetGadgetColor(44, #PB_Gadget_BackColor, $F3C8F3)
@@ -171,7 +171,8 @@ ElseIf    PeekS(*Frost, 1111, #PB_UTF8) = "charle"
           ReceiveNetworkData(ConnectionID, *Mario, 2003)
              Data46$ = PeekS(*Mario, 2003, #PB_UTF8)
             Data45$ = PeekS(*Alex, 2000, #PB_UTF8)
-          AddGadgetItem(44, -1, "Canal Mondial")
+            AddGadgetItem(44, -1, "Canal Mondial")
+            
           AddGadgetItem(44, -1, "Ventes - Échanges")
           AddGadgetItem(44, -1, "Support Tech...")
          
@@ -235,11 +236,19 @@ EndSelect
        
        If GetGadgetText(44) = "Canal Mondial" 
         
-       dd2$ = "Eric2"
+         dd2$ = "Eric2"
+     *EditS =    AllocateMemory(10000)
        PokeS(*Eric, dd2$, 500, #PB_UTF8)
        SendNetworkData(ConnectionID, *Eric, 500)
-         ReAllocateMemory(*Eric, 500)
-        EndIf  
+       Edit$ = GetGadgetText(46)
+       PokeS(*EditS, Edit$, 10000, #PB_UTF8)
+       SendNetworkData(ConnectionID, *EditS, 10000)
+       ReAllocateMemory(*Eric, 500)
+       ReAllocateMemory(*EditS, 10000)
+       ;ReceiveNetworkData()
+       
+       EndIf
+       
         
          
        
@@ -288,8 +297,8 @@ EndSelect
   
    
 ; IDE Options = PureBasic 6.12 LTS (Linux - x64)
-; CursorPosition = 64
-; FirstLine = 50
+; CursorPosition = 247
+; FirstLine = 229
 ; Folding = -
 ; EnableThread
 ; EnableXP
